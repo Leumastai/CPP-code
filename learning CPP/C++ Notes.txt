@@ -1,0 +1,154 @@
+#include <iomanip>
+std::cout << "Ints" << "Floats" << "Doubles" << "\n";
+std::cout << "Ints" << std::setw(15) << "Floats" << std::setw(15) << "Doubles" << "\n";
+//setw() == set width to 15 i.e leave 15 spaces
+
+#include "iostream" //look for the library in my local file directory before looking at the standard library
+#include <iostream> //look at the standard library
+
+--> FILE IO STEPS
+1. #include <fstream> //library for reading and outputing file
+2. Create streams
+- ofstream myfile; (for writing to a fiel where myfile is the string of the file)
+- ifstream myfile; (for reading a file)
+- fstream myfile; (for both reading and writeing a file)
+3. open the file
+
+Header files have .hpp extension just like library
+
+Function Overloading will allow us to use the same function name for diffrent functions. As long as the argument list is different, the compiler will be able to choose the correct definition.
+
+Pointer store address of variables or a memory loaction. A pointer is a variable whose value is the address of another variable.
+
+a pointer variable is a variable that stores address of another variable.
+& operator before x is used to get address of x.
+int x =10;
+int *ptr;
+ptr = &x;
+
+*ptr -- t print the pointer value
+ptr to print the address in memory
+
+
+Templates are used to write functions once snad use it over and over for diffrent variable type.
+
+Just as with non-generic classes, we have private and public members. To signify the variable type that is changable, use the name you assigned in the template command. In our case, this is T.
+
+class GradStudent: public Student
+The access control before the base class (in this case 'public') determines the access of the inherited class.
+
+There are three types of access control: public, private, and protected.
+
+Public Inheritance means all public members of the base class are accessible to the derived class
+Private Inheritance means all members of the base class are private to the derived class
+Protected Inheritance means all members of the base class are protected to the derived class.
+It is very rare to have a protected or private inheritance, the vast majority of the time inheritance is public.
+
+A virtual function is a member function that you expect to be redefined in derived classes. When you refer to a derived class object using a pointer or a reference to the base class, you can call a virtual function for that object and execute the derived class's version of the function.
+virtual functions are functions in the base class that you can override in derived classes.
+
+Pure Virtual Functions are a special case of virtual functions.
+
+A pure virtual function is used when the base class has a function that will be defined in its derived class, but it has no meaningful definition in the base class.
+
+Since we can add elements anywhere in the vector, we do not refer to the first element of a vector as the zero element, we call it the beginning. The last element is called end. To keep track of where we are in the vector, we need an iterator.
+
+insert adds elements to the location after the iterator.
+
+To add elements using insert:
+
+Set the iterator to one before the location where you would like to add an element.
+Use insert to add the element.
+
+
+
+
+
+C++ PERSONAL QUESTIONS:
+Question:
+what does int main(int argc, const char** argv) mean? since we can use int main() and same pogramm still run.
+ANS:
+int main(int argc, const char **argv) is used when your programm is going to run from command line. `argc` is the numbr of arguments being passed into your progam from the command line and `argv` is the array of arguments.
+argc and argv are how comand line arguments are passed to the main () in c++. argc (argment count) and argv (argument vetor) can be given any valid identifier such:
+int main(int num_args, char** arg_strings)
+
+Question:
+What is a namespace?
+ANS:
+A namespace is a declarative region that provides a scope to the identifiers (names of the types, function, variables etc) inside it. e.g
+
+namespace someFunctions
+{   
+    // Avoid cluttering the global namespace. 
+    // A couple of simple C++ functions that we want to expose to Python. 
+    std::string greet() 
+    { 
+        return "hello, world"; 
+        
+    }
+    
+    int square(int number)
+    {
+        return number * number;
+    
+    }
+    
+    int myName = 5;
+}
+
+int main()
+{
+	std::cout << someFunctions::square(someFunctions::myName);
+}
+
+A namespace doesn't need to have a name. e.g
+
+namespace
+{   
+    // Avoid cluttering the global namespace. 
+    // A couple of simple C++ functions that we want to expose to Python. 
+    std::string greet() 
+    { 
+        return "hello, world"; 
+        
+    }
+    
+    int square(int number)
+    {
+        return number * number;
+    
+    }
+}
+
+int main()
+{
+	std::cout << greet();
+}
+
+Multiple namespace blocks with the same name are allowed. All declarations within those blocks are declared in the named scope.
+
+you can also create a class in namespace. e.g
+
+namespace ns
+{
+    // A Class in a namespace
+    class geek
+    {
+    public:
+        void display()
+        {
+            cout << "ns::geek::display()\n";
+        }
+    };
+}
+  
+int main()
+{
+    // Creating Object of geek Class
+    ns::geek obj;
+  
+    obj.display();
+  
+    return 0;
+}
+for more on namespace visit:: https://www.geeksforgeeks.org/namespace-in-c/
